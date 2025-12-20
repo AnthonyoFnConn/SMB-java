@@ -27,6 +27,8 @@ public class Player extends GameObject {
 		setX(getVelX() + getX());
 		setY(getVelY() + getY());
 		applyGravity();
+		
+		collision();
 	}
 
 	@Override
@@ -42,18 +44,24 @@ public class Player extends GameObject {
 			
 		if (temp.getID() == ObjectId.Block || temp.getID() == ObjectId.Pipe) {
 			if (getBounds().intersects(temp.getBounds())) {
-				
+				setY(temp.getY() - getHeight());
+				setVelY(0);
+				jumped = false;
 			}
 			
 			if (getBoundsTop().intersects(temp.getBounds())) {
-				
+				setY(temp.getY() + getHeight());
+				setVelY(0);
 			}
 			
 			if (getBoundsRight().intersects(temp.getBounds())) {
-				
+				setX(temp.getX() - getWidth());
+				setVelX(0);
 			}
 			
 			if (getBoundsLeft().intersects(temp.getBounds())) {
+				setX(temp.getX() + temp.getWidth());
+				setVelX(0);
 				
 			}
 		}

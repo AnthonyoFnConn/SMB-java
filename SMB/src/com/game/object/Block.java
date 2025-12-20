@@ -1,5 +1,6 @@
 package com.game.object;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -18,7 +19,8 @@ public class Block extends GameObject {
 
 	@Override
 	public void render(Graphics g) {
-		
+		g.setColor(Color.white);
+		g.drawRect((int) getX(),(int) getY() , (int) getWidth(), (int) getHeight());
 	}
 
 	@Override
